@@ -174,6 +174,17 @@ document.addEventListener('DOMContentLoaded', () => {
       body: 'Is it simply applying heat to a food product? A way of making certain food safe to eat? Or a way to create flavour and make food more appealing? This is just part of what Hervé This, the father of molecular gastronomy, has dedicated his life to finding out. We spoke to him to find out what his experiments have told him. And in the process even discovered the secret to cooking the perfect egg…',
       kicker: 'THE PERFECT EGG',
       tip: 'Keep water between 67 and 68°C for a flavourful, tender yolk',
+      images: {
+        left: {
+          alt: 'Boiling pot with cylindrical food wrapped in green leaves over open fire',
+        },
+        rightTop: {
+          alt: 'Person in white lab coat arranging food items on gridded surface with handwritten labels',
+        },
+        rightBottom: {
+          alt: 'Egg carton with eight cracked eggs showing varying degrees of doneness from runny to solidified yolks',
+        },
+      },
     },
     cards: {
       heading: 'TASTE THE COLOURS',
@@ -182,16 +193,25 @@ document.addEventListener('DOMContentLoaded', () => {
           title: 'RED',
           body: 'Red foods remind us of berries and soft fruits, so we anticipate a sweet taste.',
           cta: 'Learn more',
+          image: {
+            alt: 'Red themed food on spoon',
+          },
         },
         {
           title: 'GREEN',
           body: 'Fresh, zingy green colours are reminiscent of unripe fruit, promising sour or acid flavours.',
           cta: 'Learn more',
+          image: {
+            alt: 'Green themed food on spoon',
+          },
         },
         {
           title: 'WHITE',
           body: 'White foods evoke memories of salt and salty flavours, driving the expectation of a savoury treat.',
           cta: 'Learn more',
+          image: {
+            alt: 'White themed food on spoon',
+          },
         },
       ],
     },
@@ -202,14 +222,34 @@ document.addEventListener('DOMContentLoaded', () => {
     if (el) el.textContent = text
   }
 
+  const setAttribute = (selector, attribute, value) => {
+    const el = document.querySelector(`[data-cms="${selector}"]`)
+    if (el) el.setAttribute(attribute, value)
+  }
+
+  // Inject text content
   setText('wdcm.heading', cms.wdcm.heading)
   setText('wdcm.body', cms.wdcm.body)
   setText('wdcm.kicker', cms.wdcm.kicker)
   setText('wdcm.tip', cms.wdcm.tip)
   setText('cards.heading', cms.cards.heading)
+
   cms.cards.items.forEach((item, idx) => {
     setText(`cards.items.${idx}.title`, item.title)
     setText(`cards.items.${idx}.body`, item.body)
     setText(`cards.items.${idx}.cta`, item.cta)
+  })
+
+  // Inject alt-text for images
+  setAttribute('wdcm.images.left.alt', 'alt', cms.wdcm.images.left.alt)
+  setAttribute('wdcm.images.rightTop.alt', 'alt', cms.wdcm.images.rightTop.alt)
+  setAttribute(
+    'wdcm.images.rightBottom.alt',
+    'alt',
+    cms.wdcm.images.rightBottom.alt,
+  )
+
+  cms.cards.items.forEach((item, idx) => {
+    setAttribute(`cards.items.${idx}.image.alt`, 'alt', item.image.alt)
   })
 })

@@ -1,18 +1,32 @@
+// =============================================================================
+// ORCHARD FED ASSESSMENT - MAIN STYLESHEET
+// =============================================================================
+
+// =============================================================================
+// 1. VARIABLES & CONFIGURATION
+// =============================================================================
+
+// Colors
 $brand-color: #6b7280;
 $text-color: #1a1a1a;
 $muted-color: #6b7280;
 $bg-color: #0e1414;
+$dark-bg: #0e1414;
+
+// Layout
 $max-width: 1100px;
 $radius: 12px;
 $shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-$dark-bg: #0e1414;
 
 // Breakpoints
 $bp-sm: 380px;
 $bp-md: 768px;
 $bp-lg: 1024px;
 
-// Utility-like mixins
+// =============================================================================
+// 2. MIXINS & UTILITIES
+// =============================================================================
+
 @mixin container {
   max-width: $max-width;
   margin-left: auto;
@@ -38,6 +52,10 @@ $bp-lg: 1024px;
   box-shadow: $shadow;
 }
 
+// =============================================================================
+// 3. UTILITY CLASSES
+// =============================================================================
+
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;
@@ -50,15 +68,24 @@ $bp-lg: 1024px;
   border: 0 !important;
 }
 
-/* Base */
+.container {
+  @include container;
+}
+
+// =============================================================================
+// 4. BASE STYLES
+// =============================================================================
+
 * {
   box-sizing: border-box;
 }
+
 html,
 body {
   height: 100%;
   background-color: $dark-bg;
 }
+
 body {
   margin: 0;
   font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto,
@@ -71,28 +98,29 @@ body {
 a {
   color: $brand-color;
 }
+
 img {
   max-width: 100%;
   display: block;
   height: auto;
 }
 
-/* Remove bullets for semantic lists used as layout */
+// Remove bullets for semantic lists used as layout
 ul[role='list'] {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.container {
-  @include container;
-}
+// =============================================================================
+// 5. TYPOGRAPHY
+// =============================================================================
 
-/* Typography */
 .h1 {
   @include fluid-type(1.6rem, 2.4rem);
   font-weight: 700;
 }
+
 .h2 {
   @include fluid-type(1.3rem, 1.8rem);
   font-weight: light !important;
@@ -113,17 +141,22 @@ ul[role='list'] {
     letter-spacing: 1px;
   }
 }
+
 .lead {
   color: $muted-color;
 }
 
-/* Header */
+// =============================================================================
+// 6. HEADER COMPONENT
+// =============================================================================
+
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
   background: $dark-bg;
 }
+
 .site-header__inner {
   @include container;
   display: flex;
@@ -132,6 +165,7 @@ ul[role='list'] {
   padding: 0.75rem 1rem;
   margin-left: 0px;
 }
+
 .logo {
   width: 36px;
   height: 36px;
@@ -141,6 +175,7 @@ ul[role='list'] {
   align-items: center;
   justify-content: center;
 }
+
 .site-title {
   margin: 0;
   color: #fff;
@@ -159,118 +194,10 @@ ul[role='list'] {
   }
 }
 
-/* Blocks */
-.block {
-  padding: 0;
-}
-.block__header {
-  margin: 0;
-}
+// =============================================================================
+// 7. SKIP LINK (ACCESSIBILITY)
+// =============================================================================
 
-/* Gallery */
-.gallery {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  @media (min-width: $bp-sm) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media (min-width: $bp-md) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-.gallery__item {
-  background: #fff;
-  border-radius: $radius;
-  overflow: hidden;
-  box-shadow: $shadow;
-}
-.gallery__item img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.caption {
-  padding: 0.5rem 0.75rem;
-  color: $muted-color;
-  font-size: 0.9rem;
-}
-
-/* Cards */
-.cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  @media (min-width: $bp-md) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-.card {
-  background: #fff;
-  border-radius: $radius;
-  padding: 1rem;
-  box-shadow: $shadow;
-}
-.card__title {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-.card__excerpt {
-  color: $muted-color;
-}
-.btn {
-  @include button-base;
-}
-
-/* Modal */
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  z-index: 1000; // ensure above sticky header
-}
-.modal {
-  background: #fff;
-  border-radius: $radius;
-  max-width: 90vw;
-  max-height: 90vh;
-  overflow: auto;
-  box-shadow: $shadow;
-  z-index: 1001;
-}
-.modal__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #e5e7eb;
-}
-.modal__title {
-  margin: 0;
-  font-size: 1rem;
-}
-.modal__close {
-  @include button-base;
-  background: transparent;
-  color: $text-color;
-  box-shadow: none;
-  border: 1px solid #e5e7eb;
-}
-.modal__body {
-  padding: 1rem;
-}
-.modal__img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
-}
-
-/* Skip link */
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -279,6 +206,7 @@ ul[role='list'] {
   height: 1px;
   overflow: hidden;
 }
+
 .skip-link:focus {
   position: static;
   width: auto;
@@ -288,7 +216,10 @@ ul[role='list'] {
   color: #fff;
 }
 
-/* Design-provided Image/Text block */
+// =============================================================================
+// 8. MAIN CONTENT BLOCK (Image/Text Block)
+// =============================================================================
+
 .BlockImage-Text {
   height: 840px;
   align-self: stretch;
@@ -305,17 +236,20 @@ ul[role='list'] {
   border: 0;
   box-shadow: none;
 }
+
 .BlockImage-Text__media {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 10px;
 }
+
 .BlockImage-Text__right {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 .BlockImage-Text__copy {
   width: 362px;
   padding-left: 25px;
@@ -323,6 +257,7 @@ ul[role='list'] {
   overflow-wrap: break-word;
 }
 
+// Images in main block
 img.Left {
   width: 372px;
   height: 600px;
@@ -331,6 +266,7 @@ img.Left {
   object-fit: contain;
   display: block;
 }
+
 img.Right-Top {
   width: 372px;
   height: 295px;
@@ -339,6 +275,7 @@ img.Right-Top {
   object-fit: contain;
   display: block;
 }
+
 img.Right-Bottom {
   width: 372px;
   height: 295px;
@@ -348,6 +285,7 @@ img.Right-Bottom {
   display: block;
 }
 
+// Content sections
 .Content {
   height: 577px;
   flex-grow: 1;
@@ -404,6 +342,7 @@ img.Right-Bottom {
     margin: 15px 0 12px 0;
   }
 }
+
 .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to {
   height: 330px;
   align-self: stretch;
@@ -421,6 +360,7 @@ img.Right-Bottom {
   margin: 0px;
   padding: 0px;
 }
+
 .THE-PERFECT-EGG {
   width: 362px;
   height: 21px;
@@ -436,6 +376,7 @@ img.Right-Bottom {
   text-align: left;
   color: #cf1430;
 }
+
 .Keep-water-between-67-and-68C-for-a-flavourful-tender-yolk {
   width: 362px;
   height: 60px;
@@ -453,218 +394,10 @@ img.Right-Bottom {
   margin: 0;
 }
 
-/* Responsive fallbacks for the block (down to 320px) */
-@media (max-width: $bp-lg) {
-  .BlockImage-Text {
-    padding: 80px 60px;
-    height: auto;
-    gap: 10px;
-    .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to {
-      font-size: 15px;
-    }
-  }
-  img.Left {
-    width: 300px;
-    height: 422px;
-  }
-  img.Right-Top,
-  img.Right-Bottom {
-    width: auto;
-    height: auto;
-  }
-  .Content {
-    height: 560px;
-  }
-}
+// =============================================================================
+// 9. CARDS SECTION (Taste the colours)
+// =============================================================================
 
-@media (max-width: $bp-md) {
-  .BlockImage-Text {
-    flex-direction: column;
-    padding: 60px 24px;
-    gap: 32px;
-    align-items: center;
-  }
-  .BlockImage-Text__media {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-    max-width: 500px;
-  }
-  .BlockImage-Text__right {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    width: 100%;
-  }
-  .BlockImage-Text__copy {
-    width: 100%;
-    max-width: 500px;
-    padding-left: 0;
-    text-align: center;
-  }
-  img.Left,
-  img.Right-Top,
-  img.Right-Bottom {
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    margin: 0;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-  .Content {
-    height: auto;
-    align-items: center;
-    text-align: center;
-  }
-  .Headline {
-    justify-content: center;
-    text-align: center;
-  }
-  .WHAT-DOES-COOKING-MEAN,
-  .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to,
-  .THE-PERFECT-EGG,
-  .Keep-water-between-67-and-68C-for-a-flavourful-tender-yolk {
-    height: auto;
-    text-align: center;
-  }
-}
-
-/* indicate zoom interaction */
-.BlockImage-Text__media img {
-  cursor: zoom-in;
-}
-@media (max-width: $bp-sm) {
-  .BlockImage-Text {
-    padding: 24px 12px;
-    gap: 16px;
-    align-items: center;
-    justify-content: center;
-  }
-  .BlockImage-Text__media {
-    gap: 12px;
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .BlockImage-Text__right {
-    gap: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  .BlockImage-Text__copy {
-    max-width: 100%;
-    padding: 0 4px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  img.Left,
-  img.Right-Top,
-  img.Right-Bottom {
-    max-width: 100%;
-    width: 100%;
-    border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-    display: block;
-    margin: 0 auto;
-  }
-  .Content {
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-  }
-  .Headline {
-    justify-content: center;
-    text-align: center;
-    border-bottom: solid 1px #fff;
-  }
-  .WHAT-DOES-COOKING-MEAN {
-    font-size: 18px;
-    line-height: 1.2;
-    letter-spacing: 0.6px;
-    padding-bottom: 16px;
-    margin: 8px 0 6px 0;
-    text-align: center;
-  }
-  .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to {
-    font-size: 0.9rem;
-    line-height: 1.4;
-    margin: 0 0 12px 0;
-    text-align: center;
-  }
-  .THE-PERFECT-EGG {
-    font-size: 0.8rem;
-    margin: 0 0 6px 0;
-    text-align: center;
-    padding: 0 12px;
-    width: 100%;
-    max-width: 100%;
-  }
-  .Keep-water-between-67-and-68C-for-a-flavourful-tender-yolk {
-    font-size: 0.95rem;
-    margin: 0;
-    text-align: center;
-    padding: 0 12px;
-    width: 100%;
-    max-width: 100%;
-    line-height: 1.3;
-  }
-}
-
-/* Extra small screens (320px and below) */
-@media (max-width: 360px) {
-  .WHAT-DOES-COOKING-MEAN {
-    font-size: 16px;
-    letter-spacing: 0.5px;
-    padding-bottom: 14px;
-    margin: 6px 0 4px 0;
-  }
-  .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to {
-    font-size: 0.85rem;
-    line-height: 1.3;
-    margin: 0 0 10px 0;
-  }
-  .THE-PERFECT-EGG {
-    font-size: 0.75rem;
-    margin: 0 0 4px 0;
-    padding: 0 16px;
-    width: 100%;
-    max-width: 100%;
-  }
-  .Keep-water-between-67-and-68C-for-a-flavourful-tender-yolk {
-    font-size: 0.9rem;
-    margin: 0;
-    padding: 0 16px;
-    width: 100%;
-    max-width: 100%;
-    line-height: 1.2;
-  }
-  .Block3-cards__title {
-    font-size: 0.85rem;
-    margin: 6px 0 3px 0;
-  }
-  .Block3-cards__text {
-    font-size: 0.75rem;
-    margin: 0 2px 6px;
-    line-height: 1.3;
-  }
-  .BlockImage-Text {
-    padding: 20px 8px;
-    gap: 12px;
-  }
-  .Block3-cards {
-    padding: 20px 6px;
-  }
-}
-
-/* Taste the colours section */
 .Block3-cards {
   height: 793px;
   align-self: stretch;
@@ -678,13 +411,16 @@ img.Right-Bottom {
   background: $dark-bg;
   color: #fff;
 }
+
 .Block3-cards__inner {
   width: 100%;
 }
+
 .Block3-cards__header {
   text-align: center;
   margin-bottom: 20px;
 }
+
 .Block3-cards__rule {
   display: block;
   width: 300px;
@@ -692,27 +428,26 @@ img.Right-Bottom {
   background: rgba(255, 255, 255, 0.4);
   margin: 12px auto 0;
 }
+
 .Block3-cards__grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
 }
-@media (min-width: $bp-md) {
-  .Block3-cards__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+
 .Block3-cards__item figure {
   margin: 0;
   background: $dark-bg;
   overflow: hidden;
 }
+
 .Block3-cards__item img {
   width: 375px;
   display: block;
   object-fit: contain;
   object-position: center;
 }
+
 .Block3-cards__title {
   text-align: center;
   margin: 12px 0 8px 0;
@@ -729,50 +464,383 @@ img.Right-Bottom {
     margin: 8px 0 5px 0;
   }
 }
+
 .Block3-cards__title a.card-link {
   color: #fff;
   text-decoration: none;
 }
+
 .Block3-cards__cta {
   text-align: center;
   margin: 0 0 12px 0;
 }
+
 .Block3-cards__cta a.card-link {
   @include button-base;
   padding: 0.4rem 0.9rem;
 }
+
 .Block3-cards__text {
   text-align: center;
   color: #cbd5e1;
   margin: 0 16px 16px;
 }
 
+// =============================================================================
+// 10. MODAL COMPONENT
+// =============================================================================
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1000; // ensure above sticky header
+}
+
+.modal {
+  background: #fff;
+  border-radius: $radius;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+  box-shadow: $shadow;
+  z-index: 1001;
+}
+
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal__title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.modal__close {
+  @include button-base;
+  background: transparent;
+  color: $text-color;
+  box-shadow: none;
+  border: 1px solid #e5e7eb;
+}
+
+.modal__body {
+  padding: 1rem;
+}
+
+.modal__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+// =============================================================================
+// 11. LEGACY COMPONENTS (Gallery, Cards, Blocks)
+// =============================================================================
+
+.block {
+  padding: 0;
+}
+
+.block__header {
+  margin: 0;
+}
+
+// Gallery
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  @media (min-width: $bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: $bp-md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.gallery__item {
+  background: #fff;
+  border-radius: $radius;
+  overflow: hidden;
+  box-shadow: $shadow;
+}
+
+.gallery__item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.caption {
+  padding: 0.5rem 0.75rem;
+  color: $muted-color;
+  font-size: 0.9rem;
+}
+
+// Cards
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  @media (min-width: $bp-md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background: #fff;
+  border-radius: $radius;
+  padding: 1rem;
+  box-shadow: $shadow;
+}
+
+.card__title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.card__excerpt {
+  color: $muted-color;
+}
+
+.btn {
+  @include button-base;
+}
+
+// =============================================================================
+// 12. RESPONSIVE DESIGN
+// =============================================================================
+
+// Desktop and tablet responsive adjustments
+@media (min-width: $bp-md) {
+  .Block3-cards__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Large screen adjustments (1024px and below)
+@media (max-width: $bp-lg) {
+  .BlockImage-Text {
+    padding: 80px 60px;
+    height: auto;
+    gap: 10px;
+
+    .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to {
+      font-size: 15px;
+    }
+  }
+
+  img.Left {
+    width: 300px;
+    height: 422px;
+  }
+
+  img.Right-Top,
+  img.Right-Bottom {
+    width: auto;
+    height: auto;
+  }
+
+  .Content {
+    height: 560px;
+  }
+}
+
+// Tablet responsive adjustments (768px and below)
 @media (max-width: $bp-md) {
+  .BlockImage-Text {
+    flex-direction: column;
+    padding: 60px 24px;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .BlockImage-Text__media {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .BlockImage-Text__right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .BlockImage-Text__copy {
+    width: 100%;
+    max-width: 500px;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  img.Left,
+  img.Right-Top,
+  img.Right-Bottom {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    margin: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .Content {
+    height: auto;
+    align-items: center;
+    text-align: center;
+  }
+
+  .Headline {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .WHAT-DOES-COOKING-MEAN,
+  .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to,
+  .THE-PERFECT-EGG,
+  .Keep-water-between-67-and-68C-for-a-flavourful-tender-yolk {
+    height: auto;
+    text-align: center;
+  }
+
+  // Cards section tablet adjustments
   .Block3-cards {
     height: auto;
     padding: 60px 24px;
     align-items: center;
   }
+
   .Block3-cards__inner {
     max-width: 500px;
     margin: 0 auto;
   }
+
   .Block3-cards__rule {
     width: 200px;
   }
+
   .Block3-cards__item img {
     width: 100%;
     max-width: 300px;
     margin: 0 auto;
   }
 }
+
+// Mobile responsive adjustments (380px and below)
 @media (max-width: $bp-sm) {
+  .BlockImage-Text {
+    padding: 24px 12px;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .BlockImage-Text__media {
+    gap: 12px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .BlockImage-Text__right {
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .BlockImage-Text__copy {
+    max-width: 100%;
+    padding: 0 4px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  img.Left,
+  img.Right-Top,
+  img.Right-Bottom {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    display: block;
+    margin: 0 auto;
+  }
+
+  .Content {
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .Headline {
+    justify-content: center;
+    text-align: center;
+    border-bottom: solid 1px #fff;
+  }
+
+  .WHAT-DOES-COOKING-MEAN {
+    font-size: 18px;
+    line-height: 1.2;
+    letter-spacing: 0.6px;
+    padding-bottom: 16px;
+    margin: 8px 0 6px 0;
+    text-align: center;
+  }
+
+  .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0 0 12px 0;
+    text-align: center;
+  }
+
+  .THE-PERFECT-EGG {
+    font-size: 0.8rem;
+    margin: 0 0 6px 0;
+    text-align: center;
+    padding: 0 12px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .Keep-water-between-67-and-68C-for-a-flavourful-tender-yolk {
+    font-size: 0.95rem;
+    margin: 0;
+    text-align: center;
+    padding: 0 12px;
+    width: 100%;
+    max-width: 100%;
+    line-height: 1.3;
+  }
+
+  // Cards section mobile adjustments
   .Block3-cards {
     padding: 24px 8px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   .Block3-cards__inner {
     max-width: 100%;
     padding: 0 2px;
@@ -780,32 +848,38 @@ img.Right-Bottom {
     flex-direction: column;
     align-items: center;
   }
+
   .Block3-cards__header {
     text-align: center;
     margin-bottom: 16px;
   }
+
   .Block3-cards__rule {
     width: 120px;
     margin: 8px auto 0;
   }
+
   .Block3-cards__grid {
     gap: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
   .Block3-cards__item {
     width: 100%;
     max-width: 280px;
     display: flex;
     justify-content: center;
   }
+
   .Block3-cards__item figure {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
   .Block3-cards__item img {
     width: 100%;
     max-width: 260px;
@@ -814,11 +888,13 @@ img.Right-Bottom {
     display: block;
     border-radius: 6px;
   }
+
   .Block3-cards__title {
     text-align: center;
     margin: 8px 0 4px 0;
     font-size: 0.9rem;
   }
+
   .Block3-cards__text {
     margin: 0 4px 8px;
     font-size: 0.8rem;
@@ -826,3 +902,69 @@ img.Right-Bottom {
     line-height: 1.4;
   }
 }
+
+// Extra small screens (360px and below)
+@media (max-width: 360px) {
+  .WHAT-DOES-COOKING-MEAN {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    padding-bottom: 14px;
+    margin: 6px 0 4px 0;
+  }
+
+  .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    margin: 0 0 10px 0;
+  }
+
+  .THE-PERFECT-EGG {
+    font-size: 0.75rem;
+    margin: 0 0 4px 0;
+    padding: 0 16px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .Keep-water-between-67-and-68C-for-a-flavourful-tender-yolk {
+    font-size: 0.9rem;
+    margin: 0;
+    padding: 0 16px;
+    width: 100%;
+    max-width: 100%;
+    line-height: 1.2;
+  }
+
+  .Block3-cards__title {
+    font-size: 0.85rem;
+    margin: 6px 0 3px 0;
+  }
+
+  .Block3-cards__text {
+    font-size: 0.75rem;
+    margin: 0 2px 6px;
+    line-height: 1.3;
+  }
+
+  .BlockImage-Text {
+    padding: 20px 8px;
+    gap: 12px;
+  }
+
+  .Block3-cards {
+    padding: 20px 6px;
+  }
+}
+
+// =============================================================================
+// 13. INTERACTION STATES
+// =============================================================================
+
+// Indicate zoom interaction for images
+.BlockImage-Text__media img {
+  cursor: zoom-in;
+}
+
+// =============================================================================
+// END OF STYLESHEET
+// =============================================================================
