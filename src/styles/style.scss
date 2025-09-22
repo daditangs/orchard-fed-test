@@ -1,0 +1,529 @@
+$brand-color: #6b7280;
+$text-color: #1a1a1a;
+$muted-color: #6b7280;
+$bg-color: #0e1414;
+$max-width: 1100px;
+$radius: 12px;
+$shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+$dark-bg: #0e1414;
+
+// Breakpoints
+$bp-sm: 380px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+
+// Utility-like mixins
+@mixin container {
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@mixin fluid-type($min, $max) {
+  font-size: clamp($min, 1rem + 1.2vw, $max);
+}
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  background: $brand-color;
+  color: #fff;
+  text-decoration: none;
+  border: 0;
+  box-shadow: $shadow;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Base */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  background-color: $dark-bg;
+}
+body {
+  margin: 0;
+  font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto,
+    sans-serif;
+  color: $text-color;
+  background: $bg-color;
+  line-height: 1.6;
+}
+
+a {
+  color: $brand-color;
+}
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+/* Remove bullets for semantic lists used as layout */
+ul[role='list'] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  @include container;
+}
+
+/* Typography */
+.h1 {
+  @include fluid-type(1.6rem, 2.4rem);
+  font-weight: 700;
+}
+.h2 {
+  @include fluid-type(1.3rem, 1.8rem);
+  font-weight: light !important;
+  font-size: 30px;
+  line-height: 33px;
+  letter-spacing: 1.5px;
+  transform: uppercase;
+}
+.lead {
+  color: $muted-color;
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: $dark-bg;
+}
+.site-header__inner {
+  @include container;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-left: 0px;
+}
+.logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: $brand-color;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.site-title {
+  margin: 0;
+  color: #fff;
+  font-weight: lighter;
+}
+
+/* Blocks */
+.block {
+  padding: 0;
+}
+.block__header {
+  margin: 0;
+}
+
+/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  @media (min-width: $bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: $bp-md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.gallery__item {
+  background: #fff;
+  border-radius: $radius;
+  overflow: hidden;
+  box-shadow: $shadow;
+}
+.gallery__item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.caption {
+  padding: 0.5rem 0.75rem;
+  color: $muted-color;
+  font-size: 0.9rem;
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  @media (min-width: $bp-md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.card {
+  background: #fff;
+  border-radius: $radius;
+  padding: 1rem;
+  box-shadow: $shadow;
+}
+.card__title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+.card__excerpt {
+  color: $muted-color;
+}
+.btn {
+  @include button-base;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1000; // ensure above sticky header
+}
+.modal {
+  background: #fff;
+  border-radius: $radius;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+  box-shadow: $shadow;
+  z-index: 1001;
+}
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+.modal__title {
+  margin: 0;
+  font-size: 1rem;
+}
+.modal__close {
+  @include button-base;
+  background: transparent;
+  color: $text-color;
+  box-shadow: none;
+  border: 1px solid #e5e7eb;
+}
+.modal__body {
+  padding: 1rem;
+}
+.modal__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 0.75rem;
+  background: #000;
+  color: #fff;
+}
+
+/* Design-provided Image/Text block */
+.BlockImage-Text {
+  height: 840px;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 120px 147px;
+  background: $dark-bg;
+  color: #fff;
+  border: 0;
+  box-shadow: none;
+}
+.BlockImage-Text__media {
+  display: flex;
+}
+.BlockImage-Text__right {
+  display: flex;
+  flex-direction: column;
+}
+.BlockImage-Text__copy {
+  width: 362px;
+  padding-left: 25px;
+}
+
+img.Left {
+  width: 372px;
+  height: 600px;
+  flex-grow: 0;
+  margin: 0 0px 0 0;
+  object-fit: contain;
+}
+img.Right-Top {
+  width: 372px;
+  height: 295px;
+  flex-grow: 0;
+  margin: 0 0 10px 10px;
+  object-fit: contain;
+}
+img.Right-Bottom {
+  width: 372px;
+  height: 295px;
+  flex-grow: 0;
+  margin: 0px 0 0 10px;
+  object-fit: contain;
+}
+
+.Content {
+  height: 577px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 30px;
+  padding: 0;
+}
+
+.Headline {
+  height: 96px;
+  align-self: stretch;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 0 0 30px;
+  border-bottom: solid 1px #fff;
+}
+
+.WHAT-DOES-COOKING-MEAN {
+  height: 66px;
+  flex-grow: 1;
+  font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto,
+    sans-serif;
+  font-size: 30px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.1;
+  letter-spacing: 1.5px;
+  text-align: left;
+  color: #fff;
+  margin: 25px 0 18px 0;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to {
+  height: 330px;
+  align-self: stretch;
+  flex-grow: 0;
+  font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto,
+    sans-serif;
+  font-size: 21px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+  margin: 0px;
+  padding: 0px;
+}
+.THE-PERFECT-EGG {
+  width: 362px;
+  height: 21px;
+  flex-grow: 0;
+  font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto,
+    sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: left;
+  color: #cf1430;
+}
+.Keep-water-between-67-and-68C-for-a-flavourful-tender-yolk {
+  width: 362px;
+  height: 60px;
+  flex-grow: 0;
+  font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto,
+    sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+  margin: 0;
+}
+
+/* Responsive fallbacks for the block (down to 320px) */
+@media (max-width: $bp-lg) {
+  .BlockImage-Text {
+    padding: 80px 60px;
+    height: auto;
+  }
+}
+@media (max-width: $bp-md) {
+  .BlockImage-Text {
+    flex-direction: column;
+    padding: 60px 24px;
+    gap: 20px;
+  }
+  .BlockImage-Text__media {
+    flex-direction: column;
+  }
+  .BlockImage-Text__copy {
+    width: 100%;
+    padding-left: 0;
+  }
+  img.Left,
+  img.Right-Top,
+  img.Right-Bottom {
+    width: 100%;
+    height: auto;
+    margin: 0 0 12px 0;
+  }
+}
+
+/* indicate zoom interaction */
+.BlockImage-Text__media img {
+  cursor: zoom-in;
+}
+@media (max-width: $bp-sm) {
+  .BlockImage-Text {
+    padding: 40px 16px;
+  }
+}
+
+/* Taste the colours section */
+.Block3-cards {
+  height: 793px;
+  align-self: stretch;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 120px 147px;
+  background: $dark-bg;
+  color: #fff;
+}
+.Block3-cards__inner {
+  width: 100%;
+}
+.Block3-cards__header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.Block3-cards__rule {
+  display: block;
+  width: 300px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+  margin: 12px auto 0;
+}
+.Block3-cards__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: $bp-md) {
+  .Block3-cards__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.Block3-cards__item figure {
+  margin: 0;
+  background: $dark-bg;
+  overflow: hidden;
+}
+.Block3-cards__item img {
+  width: 375px;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+}
+.Block3-cards__title {
+  text-align: center;
+  margin: 12px 0 8px 0;
+  font-weight: 700;
+}
+.Block3-cards__title a.card-link {
+  color: #fff;
+  text-decoration: none;
+}
+.Block3-cards__cta {
+  text-align: center;
+  margin: 0 0 12px 0;
+}
+.Block3-cards__cta a.card-link {
+  @include button-base;
+  padding: 0.4rem 0.9rem;
+}
+.Block3-cards__text {
+  text-align: center;
+  color: #cbd5e1;
+  margin: 0 16px 16px;
+}
+
+@media (max-width: $bp-md) {
+  .Block3-cards {
+    height: auto;
+    padding: 60px 24px;
+  }
+}
+@media (max-width: $bp-sm) {
+  .Block3-cards {
+    padding: 40px 16px;
+  }
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Orchard FED Assessment 2025</title>
+    <meta
+      name="description"
+      content="Gallery and Cards demo for Orchard FED Skill Assessment 2025. Accessible, responsive, vanilla JS."
+    />
+    <meta name="theme-color" content="#0c6" />
+    <meta property="og:title" content="Orchard FED Assessment 2025" />
+    <meta
+      property="og:description"
+      content="Gallery and Cards demo with accessible modal and dynamic header."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/style.scss" />
+  </head>
+  <body>
+    <!-- Texts injected dynamically by JS to simulate CMS-driven layouts -->
+    <div
+      id="site-header-mount"
+      class="visually-hidden"
+      aria-hidden="true"
+    ></div>
+
+    <main id="main-content" tabindex="-1">
+      <!-- Image/Text Block from design -->
+      <section class="BlockImage-Text" aria-labelledby="wdcm-heading">
+        <div class="BlockImage-Text__media" aria-hidden="true">
+          <img
+            class="Left"
+            src="./images/left.jpg"
+            srcset="./images/left@2x.jpg 2x, ./images/left@3x.jpg 3x"
+            alt=""
+          />
+          <div class="BlockImage-Text__right">
+            <img
+              class="Right-Top"
+              src="./images/right-top.jpg"
+              srcset="
+                ./images/right-top@2x.jpg 2x,
+                ./images/right-top@3x.jpg 3x
+              "
+              alt=""
+            />
+            <img
+              class="Right-Bottom"
+              src="./images/right-bottom.jpg"
+              srcset="
+                ./images/right-bottom@2x.jpg 2x,
+                ./images/right-bottom@3x.jpg 3x
+              "
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="BlockImage-Text__copy Content">
+          <h2
+            id="wdcm-heading"
+            class="Headline WHAT-DOES-COOKING-MEAN"
+            data-cms="wdcm.heading"
+          ></h2>
+          <p
+            class="Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to"
+            data-cms="wdcm.body"
+          ></p>
+          <p class="THE-PERFECT-EGG" data-cms="wdcm.kicker"></p>
+          <p
+            class="Keep-water-between-67-and-68C-for-a-flavourful-tender-yolk"
+            data-cms="wdcm.tip"
+          ></p>
+        </div>
+      </section>
+
+      <!-- Taste the colours - three card section from design -->
+      <section class="Block3-cards" aria-labelledby="taste-heading">
+        <div class="Block3-cards__inner" aria-describedby="taste-heading">
+          <header class="Block3-cards__header">
+            <p id="taste-heading" class="h2" data-cms="cards.heading"></p>
+            <span class="Block3-cards__rule" aria-hidden="true"></span>
+          </header>
+          <ul class="Block3-cards__grid" role="list" data-block="cards">
+            <li class="Block3-cards__item">
+              <figure>
+                <a class="card-link" href="#red-details" title="Red foods">
+                  <img
+                    class="Card-img"
+                    src="./images/red.jpg"
+                    srcset="./images/red@2x.jpg 2x, ./images/red@3x.jpg 3x"
+                    alt="Red themed food on spoon"
+                    loading="lazy"
+                  />
+                </a>
+                <figcaption>
+                  <h3 class="Block3-cards__title">
+                    <a
+                      class="card-link"
+                      href="#red"
+                      title="Red foods"
+                      data-cms="cards.items.0.title"
+                    ></a>
+                  </h3>
+                  <p
+                    class="Block3-cards__text"
+                    data-cms="cards.items.0.body"
+                  ></p>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="Block3-cards__item">
+              <figure>
+                <a class="card-link" href="#green-details" title="Green foods">
+                  <img
+                    class="Card"
+                    src="./images/green.jpg"
+                    srcset="./images/green@2x.jpg 2x, ./images/green@3x.jpg 3x"
+                    alt="Green themed food on spoon"
+                    loading="lazy"
+                /></a>
+                <figcaption>
+                  <h3 class="Block3-cards__title">
+                    <a
+                      class="card-link"
+                      href="#green"
+                      title="Green foods"
+                      data-cms="cards.items.1.title"
+                    ></a>
+                  </h3>
+                  <p
+                    class="Block3-cards__text"
+                    data-cms="cards.items.1.body"
+                  ></p>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="Block3-cards__item">
+              <figure>
+                <a class="card-link" href="#white-details" title="White foods">
+                  <img
+                    class="Card"
+                    src="./images/white.jpg"
+                    srcset="./images/white@2x .jpg 2x, ./images/white@3x.jpg 3x"
+                    alt="White themed food on spoon"
+                    loading="lazy"
+                /></a>
+                <figcaption>
+                  <h3 class="Block3-cards__title">
+                    <a
+                      class="card-link"
+                      href="#white"
+                      title="White foods"
+                      data-cms="cards.items.2.title"
+                    ></a>
+                  </h3>
+                  <p
+                    class="Block3-cards__text"
+                    data-cms="cards.items.2.body"
+                  ></p>
+                </figcaption>
+              </figure>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal mount (populated by JS) -->
+    <div id="modal-root" aria-live="polite"></div>
+
+    <script type="module" src="./js/script.js"></script>
+  </body>
+</html>
