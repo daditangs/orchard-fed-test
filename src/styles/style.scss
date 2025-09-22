@@ -99,7 +99,19 @@ ul[role='list'] {
   font-size: 30px;
   line-height: 33px;
   letter-spacing: 1.5px;
-  transform: uppercase;
+  text-transform: uppercase;
+
+  @media (max-width: $bp-md) {
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 1.2px;
+  }
+
+  @media (max-width: $bp-sm) {
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 1px;
+  }
 }
 .lead {
   color: $muted-color;
@@ -133,6 +145,18 @@ ul[role='list'] {
   margin: 0;
   color: #fff;
   font-weight: lighter;
+  font-size: 1.2rem;
+  line-height: 1.3;
+
+  @media (max-width: $bp-md) {
+    font-size: 1.1rem;
+    line-height: 1.2;
+  }
+
+  @media (max-width: $bp-sm) {
+    font-size: 1rem;
+    line-height: 1.1;
+  }
 }
 
 /* Blocks */
@@ -355,6 +379,20 @@ img.Right-Bottom {
   margin: 25px 0 18px 0;
   padding-bottom: 60px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+  @media (max-width: $bp-md) {
+    font-size: 26px;
+    letter-spacing: 1.2px;
+    padding-bottom: 40px;
+    margin: 20px 0 15px 0;
+  }
+
+  @media (max-width: $bp-sm) {
+    font-size: 22px;
+    letter-spacing: 1px;
+    padding-bottom: 30px;
+    margin: 15px 0 12px 0;
+  }
 }
 .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to {
   height: 330px;
@@ -416,10 +454,18 @@ img.Right-Bottom {
   .BlockImage-Text {
     flex-direction: column;
     padding: 60px 24px;
-    gap: 20px;
+    gap: 30px;
   }
   .BlockImage-Text__media {
     flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .BlockImage-Text__right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
   }
   .BlockImage-Text__copy {
     width: 100%;
@@ -429,8 +475,20 @@ img.Right-Bottom {
   img.Right-Top,
   img.Right-Bottom {
     width: 100%;
+    max-width: 400px;
     height: auto;
-    margin: 0 0 12px 0;
+    margin: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  .Content {
+    height: auto;
+  }
+  .WHAT-DOES-COOKING-MEAN,
+  .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to,
+  .THE-PERFECT-EGG,
+  .Keep-water-between-67-and-68C-for-a-flavourful-tender-yolk {
+    height: auto;
   }
 }
 
@@ -441,6 +499,37 @@ img.Right-Bottom {
 @media (max-width: $bp-sm) {
   .BlockImage-Text {
     padding: 40px 16px;
+    gap: 24px;
+  }
+  .BlockImage-Text__media {
+    gap: 16px;
+  }
+  .BlockImage-Text__right {
+    gap: 16px;
+  }
+  img.Left,
+  img.Right-Top,
+  img.Right-Bottom {
+    max-width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  }
+  .WHAT-DOES-COOKING-MEAN {
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 0.8px;
+    padding-bottom: 25px;
+    margin: 12px 0 10px 0;
+  }
+  .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .THE-PERFECT-EGG {
+    font-size: 0.9rem;
+  }
+  .Keep-water-between-67-and-68C-for-a-flavourful-tender-yolk {
+    font-size: 1.05rem;
   }
 }
 
@@ -497,6 +586,17 @@ img.Right-Bottom {
   text-align: center;
   margin: 12px 0 8px 0;
   font-weight: 700;
+  font-size: 1.1rem;
+
+  @media (max-width: $bp-md) {
+    font-size: 1rem;
+    margin: 10px 0 6px 0;
+  }
+
+  @media (max-width: $bp-sm) {
+    font-size: 0.95rem;
+    margin: 8px 0 5px 0;
+  }
 }
 .Block3-cards__title a.card-link {
   color: #fff;
@@ -524,6 +624,16 @@ img.Right-Bottom {
 }
 @media (max-width: $bp-sm) {
   .Block3-cards {
-    padding: 40px 16px;
+    padding: 32px 12px;
+  }
+  .Block3-cards__grid {
+    gap: 16px;
+  }
+  .Block3-cards__item figure {
+    width: 100%;
+  }
+  .Block3-cards__item img {
+    width: 100%;
+    height: auto;
   }
 }

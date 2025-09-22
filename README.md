@@ -59,7 +59,7 @@ npm run preview
 ### Deployment
 
 - The site is deployed to GitHub Pages via GitHub Actions on every push/PR to `main` using Node 20.
-- Live URL format: 
+- Live URL format: https://daditangs.github.io/orchard-fed-test/
 
 ### Notes
 
