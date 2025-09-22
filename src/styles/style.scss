@@ -307,36 +307,45 @@ ul[role='list'] {
 }
 .BlockImage-Text__media {
   display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
 }
 .BlockImage-Text__right {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 .BlockImage-Text__copy {
   width: 362px;
   padding-left: 25px;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 }
 
 img.Left {
   width: 372px;
   height: 600px;
   flex-grow: 0;
-  margin: 0 0px 0 0;
+  margin: 0;
   object-fit: contain;
+  display: block;
 }
 img.Right-Top {
   width: 372px;
   height: 295px;
   flex-grow: 0;
-  margin: 0 0 10px 10px;
+  margin: 0;
   object-fit: contain;
+  display: block;
 }
 img.Right-Bottom {
   width: 372px;
   height: 295px;
   flex-grow: 0;
-  margin: 0px 0 0 10px;
+  margin: 0;
   object-fit: contain;
+  display: block;
 }
 
 .Content {
@@ -348,6 +357,7 @@ img.Right-Bottom {
   align-items: stretch;
   gap: 30px;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .Headline {
@@ -448,34 +458,57 @@ img.Right-Bottom {
   .BlockImage-Text {
     padding: 80px 60px;
     height: auto;
+    gap: 10px;
+    .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to {
+      font-size: 15px;
+    }
+  }
+  img.Left {
+    width: 300px;
+    height: 422px;
+  }
+  img.Right-Top,
+  img.Right-Bottom {
+    width: auto;
+    height: auto;
+  }
+  .Content {
+    height: 560px;
   }
 }
+
 @media (max-width: $bp-md) {
   .BlockImage-Text {
     flex-direction: column;
     padding: 60px 24px;
-    gap: 30px;
+    gap: 32px;
+    align-items: center;
   }
   .BlockImage-Text__media {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    width: 100%;
+    max-width: 500px;
   }
   .BlockImage-Text__right {
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: center;
+    width: 100%;
   }
   .BlockImage-Text__copy {
     width: 100%;
+    max-width: 500px;
     padding-left: 0;
+    text-align: center;
   }
   img.Left,
   img.Right-Top,
   img.Right-Bottom {
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
     height: auto;
     margin: 0;
     border-radius: 8px;
@@ -483,12 +516,19 @@ img.Right-Bottom {
   }
   .Content {
     height: auto;
+    align-items: center;
+    text-align: center;
+  }
+  .Headline {
+    justify-content: center;
+    text-align: center;
   }
   .WHAT-DOES-COOKING-MEAN,
   .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to,
   .THE-PERFECT-EGG,
   .Keep-water-between-67-and-68C-for-a-flavourful-tender-yolk {
     height: auto;
+    text-align: center;
   }
 }
 
@@ -498,38 +538,129 @@ img.Right-Bottom {
 }
 @media (max-width: $bp-sm) {
   .BlockImage-Text {
-    padding: 40px 16px;
-    gap: 24px;
+    padding: 24px 12px;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
   }
   .BlockImage-Text__media {
-    gap: 16px;
+    gap: 12px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .BlockImage-Text__right {
-    gap: 16px;
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .BlockImage-Text__copy {
+    max-width: 100%;
+    padding: 0 4px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   img.Left,
   img.Right-Top,
   img.Right-Bottom {
     max-width: 100%;
+    width: 100%;
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    display: block;
+    margin: 0 auto;
+  }
+  .Content {
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+  .Headline {
+    justify-content: center;
+    text-align: center;
+    border-bottom: solid 1px #fff;
   }
   .WHAT-DOES-COOKING-MEAN {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.2;
-    letter-spacing: 0.8px;
-    padding-bottom: 25px;
-    margin: 12px 0 10px 0;
+    letter-spacing: 0.6px;
+    padding-bottom: 16px;
+    margin: 8px 0 6px 0;
+    text-align: center;
   }
   .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to {
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0 0 12px 0;
+    text-align: center;
   }
   .THE-PERFECT-EGG {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    margin: 0 0 6px 0;
+    text-align: center;
+    padding: 0 12px;
+    width: 100%;
+    max-width: 100%;
   }
   .Keep-water-between-67-and-68C-for-a-flavourful-tender-yolk {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
+    margin: 0;
+    text-align: center;
+    padding: 0 12px;
+    width: 100%;
+    max-width: 100%;
+    line-height: 1.3;
+  }
+}
+
+/* Extra small screens (320px and below) */
+@media (max-width: 360px) {
+  .WHAT-DOES-COOKING-MEAN {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    padding-bottom: 14px;
+    margin: 6px 0 4px 0;
+  }
+  .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    margin: 0 0 10px 0;
+  }
+  .THE-PERFECT-EGG {
+    font-size: 0.75rem;
+    margin: 0 0 4px 0;
+    padding: 0 16px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .Keep-water-between-67-and-68C-for-a-flavourful-tender-yolk {
+    font-size: 0.9rem;
+    margin: 0;
+    padding: 0 16px;
+    width: 100%;
+    max-width: 100%;
+    line-height: 1.2;
+  }
+  .Block3-cards__title {
+    font-size: 0.85rem;
+    margin: 6px 0 3px 0;
+  }
+  .Block3-cards__text {
+    font-size: 0.75rem;
+    margin: 0 2px 6px;
+    line-height: 1.3;
+  }
+  .BlockImage-Text {
+    padding: 20px 8px;
+    gap: 12px;
+  }
+  .Block3-cards {
+    padding: 20px 6px;
   }
 }
 
@@ -620,20 +751,78 @@ img.Right-Bottom {
   .Block3-cards {
     height: auto;
     padding: 60px 24px;
+    align-items: center;
+  }
+  .Block3-cards__inner {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .Block3-cards__rule {
+    width: 200px;
+  }
+  .Block3-cards__item img {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
   }
 }
 @media (max-width: $bp-sm) {
   .Block3-cards {
-    padding: 32px 12px;
+    padding: 24px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .Block3-cards__inner {
+    max-width: 100%;
+    padding: 0 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .Block3-cards__header {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .Block3-cards__rule {
+    width: 120px;
+    margin: 8px auto 0;
   }
   .Block3-cards__grid {
     gap: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .Block3-cards__item {
+    width: 100%;
+    max-width: 280px;
+    display: flex;
+    justify-content: center;
   }
   .Block3-cards__item figure {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .Block3-cards__item img {
     width: 100%;
+    max-width: 260px;
     height: auto;
+    margin: 0 auto;
+    display: block;
+    border-radius: 6px;
+  }
+  .Block3-cards__title {
+    text-align: center;
+    margin: 8px 0 4px 0;
+    font-size: 0.9rem;
+  }
+  .Block3-cards__text {
+    margin: 0 4px 8px;
+    font-size: 0.8rem;
+    text-align: center;
+    line-height: 1.4;
   }
 }
