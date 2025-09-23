@@ -31,8 +31,8 @@ $bp-lg: 1024px;
   max-width: $max-width;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
 }
 
 @mixin fluid-type($min, $max) {
@@ -221,16 +221,16 @@ ul[role='list'] {
 // =============================================================================
 
 .BlockImage-Text {
-  height: 840px;
+  min-height: 840px;
   align-self: stretch;
   flex-grow: 0;
   margin: 0;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
-  gap: 30px;
-  padding: 120px 147px;
+  gap: clamp(2rem, 4vw, 4rem);
+  padding: clamp(4rem, 8vh, 8rem) clamp(3rem, 8vw, 12rem);
   background: $dark-bg;
   color: #fff;
   border: 0;
@@ -238,94 +238,102 @@ ul[role='list'] {
 }
 
 .BlockImage-Text__media {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
   gap: 10px;
+  width: 100%;
+  max-width: 750px;
+  height: 600px;
 }
 
 .BlockImage-Text__right {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: contents;
 }
 
 .BlockImage-Text__copy {
-  width: 362px;
-  padding-left: 25px;
+  width: clamp(300px, 35vw, 500px);
+  padding-left: clamp(1rem, 2vw, 2rem);
   box-sizing: border-box;
   overflow-wrap: break-word;
+  flex-shrink: 1;
 }
 
-// Images in main block
+// Images in main block - Grid layout for collage effect
 img.Left {
-  width: 372px;
-  height: 600px;
-  flex-grow: 0;
-  margin: 0;
-  object-fit: contain;
+  grid-column: 1;
+  grid-row: 1 / 3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   display: block;
+  border-radius: 8px;
 }
 
 img.Right-Top {
-  width: 372px;
-  height: 295px;
-  flex-grow: 0;
-  margin: 0;
-  object-fit: contain;
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   display: block;
+  border-radius: 8px;
 }
 
 img.Right-Bottom {
-  width: 372px;
-  height: 295px;
-  flex-grow: 0;
-  margin: 0;
-  object-fit: contain;
+  grid-column: 2;
+  grid-row: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   display: block;
+  border-radius: 8px;
 }
 
 // Content sections
 .Content {
-  height: 577px;
+  min-height: 577px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  gap: 30px;
+  gap: clamp(1rem, 2vw, 2rem);
   padding: 0;
   box-sizing: border-box;
 }
 
 .Headline {
-  height: 96px;
+  min-height: 80px;
   align-self: stretch;
   flex-grow: 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  padding: 0 0 30px;
+  gap: clamp(0.4rem, 0.8vw, 0.8rem);
+  padding: 0 0 clamp(1rem, 2vh, 2rem);
   border-bottom: solid 1px #fff;
 }
 
 .WHAT-DOES-COOKING-MEAN {
-  height: 66px;
+  min-height: 66px;
   flex-grow: 1;
   font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto,
     sans-serif;
-  font-size: 30px;
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
   font-weight: 300;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.1;
-  letter-spacing: 1.5px;
+  line-height: 1.3;
+  letter-spacing: clamp(0.03em, 0.1vw, 0.15em);
   text-align: left;
   color: #fff;
-  margin: 25px 0 18px 0;
-  padding-bottom: 60px;
+  margin: clamp(0.8rem, 1.5vh, 1.5rem) 0 clamp(0.6rem, 1vh, 1rem) 0;
+  padding-bottom: clamp(1.5rem, 3vh, 2.5rem);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 
   @media (max-width: $bp-md) {
@@ -344,30 +352,31 @@ img.Right-Bottom {
 }
 
 .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to {
-  height: 330px;
+  min-height: 280px;
   align-self: stretch;
   flex-grow: 0;
   font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto,
     sans-serif;
-  font-size: 21px;
+  font-size: clamp(0.85rem, 1.4vw, 1.1rem);
   font-weight: 300;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.43;
+  line-height: 1.6;
   letter-spacing: normal;
   text-align: left;
   color: #fff;
   margin: 0px;
   padding: 0px;
+  overflow-y: auto;
 }
 
 .THE-PERFECT-EGG {
-  width: 362px;
-  height: 21px;
+  width: 100%;
+  min-height: 21px;
   flex-grow: 0;
   font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto,
     sans-serif;
-  font-size: 15px;
+  font-size: clamp(0.7rem, 1.2vw, 0.9rem);
   font-weight: 700;
   font-stretch: normal;
   font-style: normal;
@@ -375,23 +384,24 @@ img.Right-Bottom {
   letter-spacing: normal;
   text-align: left;
   color: #cf1430;
+  margin: clamp(0.4rem, 0.8vh, 0.8rem) 0;
 }
 
 .Keep-water-between-67-and-68C-for-a-flavourful-tender-yolk {
-  width: 362px;
-  height: 60px;
+  width: 100%;
+  min-height: 60px;
   flex-grow: 0;
   font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto,
     sans-serif;
-  font-size: 21px;
+  font-size: clamp(0.85rem, 1.4vw, 1.1rem);
   font-weight: 700;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.43;
+  line-height: 1.5;
   letter-spacing: normal;
   text-align: left;
   color: #fff;
-  margin: 0;
+  margin: clamp(0.4rem, 0.8vh, 0.8rem) 0;
 }
 
 // =============================================================================
@@ -631,28 +641,22 @@ img.Right-Bottom {
 // Large screen adjustments (1024px and below)
 @media (max-width: $bp-lg) {
   .BlockImage-Text {
-    padding: 80px 60px;
-    height: auto;
-    gap: 10px;
+    padding: clamp(3rem, 6vh, 6rem) clamp(2rem, 5vw, 5rem);
+    min-height: auto;
+    gap: clamp(1.5rem, 3vw, 3rem);
 
     .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to {
-      font-size: 15px;
+      font-size: clamp(0.8rem, 1.2vw, 1rem);
     }
   }
 
-  img.Left {
-    width: 300px;
-    height: 422px;
-  }
-
-  img.Right-Top,
-  img.Right-Bottom {
-    width: auto;
-    height: auto;
+  .BlockImage-Text__media {
+    max-width: 600px;
+    height: 480px;
   }
 
   .Content {
-    height: 560px;
+    min-height: 480px;
   }
 }
 
@@ -660,25 +664,23 @@ img.Right-Bottom {
 @media (max-width: $bp-md) {
   .BlockImage-Text {
     flex-direction: column;
-    padding: 60px 24px;
-    gap: 32px;
+    padding: clamp(3rem, 5vh, 5rem) clamp(1.5rem, 4vw, 4rem);
+    gap: clamp(2rem, 4vw, 4rem);
     align-items: center;
   }
 
   .BlockImage-Text__media {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 12px;
     width: 100%;
     max-width: 500px;
+    height: 400px;
   }
 
   .BlockImage-Text__right {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    width: 100%;
+    display: contents;
   }
 
   .BlockImage-Text__copy {
@@ -688,13 +690,23 @@ img.Right-Bottom {
     text-align: center;
   }
 
-  img.Left,
-  img.Right-Top,
+  img.Left {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  img.Right-Top {
+    grid-column: 2;
+    grid-row: 1;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
   img.Right-Bottom {
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    margin: 0;
+    grid-column: 2;
+    grid-row: 2;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
@@ -744,46 +756,54 @@ img.Right-Bottom {
 // Mobile responsive adjustments (380px and below)
 @media (max-width: $bp-sm) {
   .BlockImage-Text {
-    padding: 24px 12px;
-    gap: 16px;
+    padding: clamp(1.5rem, 3vh, 3rem) clamp(1rem, 3vw, 3rem);
+    gap: clamp(1rem, 2vw, 2rem);
     align-items: center;
     justify-content: center;
   }
 
   .BlockImage-Text__media {
-    gap: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 8px;
+    width: 100%;
     max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    height: 300px;
   }
 
   .BlockImage-Text__right {
-    gap: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+    display: contents;
   }
 
   .BlockImage-Text__copy {
     max-width: 100%;
-    padding: 0 4px;
+    padding: 0 clamp(0.5rem, 2vw, 2rem);
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  img.Left,
-  img.Right-Top,
-  img.Right-Bottom {
-    max-width: 100%;
-    width: 100%;
+  img.Left {
+    grid-column: 1;
+    grid-row: 1 / 3;
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-    display: block;
-    margin: 0 auto;
+  }
+
+  img.Right-Top {
+    grid-column: 2;
+    grid-row: 1;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  }
+
+  img.Right-Bottom {
+    grid-column: 2;
+    grid-row: 2;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   }
 
   .Content {
@@ -799,38 +819,38 @@ img.Right-Bottom {
   }
 
   .WHAT-DOES-COOKING-MEAN {
-    font-size: 18px;
-    line-height: 1.2;
-    letter-spacing: 0.6px;
-    padding-bottom: 16px;
-    margin: 8px 0 6px 0;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    line-height: 1.3;
+    letter-spacing: clamp(0.02em, 0.08vw, 0.1em);
+    padding-bottom: clamp(1rem, 2vh, 1.5rem);
+    margin: clamp(0.5rem, 1vh, 1rem) 0 clamp(0.4rem, 0.8vh, 0.8rem) 0;
     text-align: center;
   }
 
   .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to {
-    font-size: 0.9rem;
-    line-height: 1.4;
-    margin: 0 0 12px 0;
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    line-height: 1.5;
+    margin: 0 0 clamp(0.8rem, 1.5vh, 1.5rem) 0;
     text-align: center;
   }
 
   .THE-PERFECT-EGG {
-    font-size: 0.8rem;
-    margin: 0 0 6px 0;
+    font-size: clamp(0.7rem, 1.1vw, 0.9rem);
+    margin: 0 0 clamp(0.4rem, 0.8vh, 0.8rem) 0;
     text-align: center;
-    padding: 0 12px;
+    padding: 0 clamp(0.8rem, 2vw, 1.5rem);
     width: 100%;
     max-width: 100%;
   }
 
   .Keep-water-between-67-and-68C-for-a-flavourful-tender-yolk {
-    font-size: 0.95rem;
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
     margin: 0;
     text-align: center;
-    padding: 0 12px;
+    padding: 0 clamp(0.8rem, 2vw, 1.5rem);
     width: 100%;
     max-width: 100%;
-    line-height: 1.3;
+    line-height: 1.4;
   }
 
   // Cards section mobile adjustments
@@ -906,33 +926,33 @@ img.Right-Bottom {
 // Extra small screens (360px and below)
 @media (max-width: 360px) {
   .WHAT-DOES-COOKING-MEAN {
-    font-size: 16px;
-    letter-spacing: 0.5px;
-    padding-bottom: 14px;
-    margin: 6px 0 4px 0;
+    font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+    letter-spacing: clamp(0.01em, 0.05vw, 0.08em);
+    padding-bottom: clamp(0.8rem, 2vh, 1.5rem);
+    margin: clamp(0.4rem, 0.8vh, 0.8rem) 0 clamp(0.3rem, 0.6vh, 0.6rem) 0;
   }
 
   .Is-it-simply-applying-heat-to-a-food-product-A-way-of-making-certain-food-safe-to-eat-Or-a-way-to {
-    font-size: 0.85rem;
-    line-height: 1.3;
-    margin: 0 0 10px 0;
+    font-size: clamp(0.75rem, 1.1vw, 0.9rem);
+    line-height: 1.4;
+    margin: 0 0 clamp(0.6rem, 1.2vh, 1.2rem) 0;
   }
 
   .THE-PERFECT-EGG {
-    font-size: 0.75rem;
-    margin: 0 0 4px 0;
-    padding: 0 16px;
+    font-size: clamp(0.65rem, 1vw, 0.8rem);
+    margin: 0 0 clamp(0.3rem, 0.6vh, 0.6rem) 0;
+    padding: 0 clamp(0.6rem, 2vw, 1.5rem);
     width: 100%;
     max-width: 100%;
   }
 
   .Keep-water-between-67-and-68C-for-a-flavourful-tender-yolk {
-    font-size: 0.9rem;
+    font-size: clamp(0.75rem, 1.1vw, 0.9rem);
     margin: 0;
-    padding: 0 16px;
+    padding: 0 clamp(0.6rem, 2vw, 1.5rem);
     width: 100%;
     max-width: 100%;
-    line-height: 1.2;
+    line-height: 1.3;
   }
 
   .Block3-cards__title {
@@ -947,8 +967,13 @@ img.Right-Bottom {
   }
 
   .BlockImage-Text {
-    padding: 20px 8px;
-    gap: 12px;
+    padding: clamp(1rem, 2vh, 2rem) clamp(0.5rem, 2vw, 2rem);
+    gap: clamp(0.8rem, 2vw, 2rem);
+  }
+
+  .BlockImage-Text__media {
+    height: 250px;
+    gap: 6px;
   }
 
   .Block3-cards {
